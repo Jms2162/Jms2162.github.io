@@ -171,3 +171,30 @@ nav a{white-space:nowrap}
   .about-text{max-width:none}
   .avatar{flex-basis:auto;width:160px;height:200px;min-height:0}
 }
+
+
+/* Banderas al pasar el mouse por los botones de idioma */
+.lang{overflow:visible}
+.lang button:first-child{border-radius:3px 0 0 3px}
+.lang button:last-child{border-radius:0 3px 3px 0}
+.lang button{position:relative}
+.lang button::after{
+  content:"";position:absolute;top:calc(100% + 10px);left:50%;
+  width:44px;height:30px;
+  background:var(--flag) center/cover no-repeat;
+  border:2px solid var(--line);border-radius:3px;
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+  opacity:0;pointer-events:none;z-index:60;
+  transform:translateX(-50%) translateY(-4px);
+  transition:opacity .15s ease,transform .15s ease;
+}
+.lang button:hover::after,
+.lang button:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Argentina */
+.lang button[data-lang="es"]{--flag:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%2374acdf'/><rect y='6.67' width='30' height='6.66' fill='%23fff'/><circle cx='15' cy='10' r='2.2' fill='%23f6b40e'/></svg>")}
+/* Estados Unidos (simplificada) */
+.lang button[data-lang="en"]{--flag:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23b22234'/><path d='M15 0V20' stroke='%23fff' stroke-width='30' stroke-dasharray='1.538' stroke-dashoffset='1.538'/><rect width='12' height='10.77' fill='%233c3b6e'/></svg>")}
+/* Brasil */
+.lang button[data-lang="pt"]{--flag:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23009b3a'/><polygon points='15,2 27,10 15,18 3,10' fill='%23fedf00'/><circle cx='15' cy='10' r='4' fill='%23002776'/></svg>")}
+
