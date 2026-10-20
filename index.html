@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joaquin Sanguinetti · Labs</title>
+<meta id="meta-desc" name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<style>
+  .logo{
+    color: red;
+  }
+
+  .span-creditos{
+    color: green;
+  }
+
+</style>
+<body>
+<header class="top">
+  <a class="logo" href="#inicio">#jms2162<span>@labs</span></a>
+  <nav>
+    <a href="#laboratorios" data-i18n="nav_labs"></a>
+    <a href="#sobre-mi" data-i18n="nav_about"></a>
+    <a href="#contacto" data-i18n="nav_contact"></a>
+    <span class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <p class="prompt">$ whoami</p>
+    <h1>Joaquin Sanguinetti</h1>
+    <p class="lead" data-i18n="hero_lead"></p>
+    <dl class="stats">
+      <div><dt data-i18n="stat_total"></dt><dd id="stat-total">0</dd></div>
+      <div><dt data-i18n="stat_plat"></dt><dd id="stat-plat">0</dd></div>
+      <div><dt data-i18n="stat_last"></dt><dd id="stat-last">—</dd></div>
+    </dl>
+  </section>
+
+  <section id="laboratorios">
+    <h2 data-i18n="labs_title"></h2>
+    <div class="filters">
+      <input id="q" type="search" data-i18n-ph="search_ph" data-i18n-aria="search_aria">
+      <select id="f-plat"></select>
+      <select id="f-dif"></select>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" data-i18n="empty" hidden></p>
+  </section>
+
+  <section id="sobre-mi" class="about">
+  <h2 data-i18n="about_title"></h2>
+
+  <div class="about-top">
+    <img class="avatar" src="foto.jpg" alt="Joaquin Sanguinetti" width="200" height="200" onerror="this.remove()">
+    <div class="about-text">
+      <p data-i18n="about_p1"></p>
+      <p data-i18n="about_p2"></p>
+      <p data-i18n="about_p3"></p>
+      <a class="btn" id="cv-btn" href="cv-es.pdf" download data-i18n="cv_btn"></a>
+    </div>
+  </div>
+
+  <div class="skills">
+    <div class="sk sk-blue">
+      <h3 data-i18n="sk_blue"></h3>
+      <div class="tags">
+        <span class="tag">Splunk</span><span class="tag">Active Directory</span>
+        <span class="tag">Oracle Identity Manager</span><span class="tag">ServiceNow</span>
+        <span class="tag">ISO 27001</span>
+      </div>
+    </div>
+    <div class="sk sk-off">
+      <h3 data-i18n="sk_off"></h3>
+      <div class="tags">
+        <span class="tag">Nmap</span><span class="tag">Metasploit</span>
+        <span class="tag">Nessus</span><span class="tag">Shodan</span>
+        <span class="tag">Censys</span><span class="tag">Maltego</span>
+        <span class="tag">theHarvester</span><span class="tag">DNSRecon</span>
+        <span class="tag">FOCA</span><span class="tag">ExifTool</span>
+      </div>
+    </div>
+    <div class="sk sk-net">
+      <h3 data-i18n="sk_net"></h3>
+      <div class="tags">
+        <span class="tag">TCP/IP</span><span class="tag">Subnetting</span>
+        <span class="tag">VLANs</span><span class="tag">Routing</span>
+        <span class="tag">DHCP</span><span class="tag">DNS</span>
+      </div>
+    </div>
+    <div class="sk sk-dev">
+      <h3 data-i18n="sk_dev"></h3>
+      <div class="tags">
+        <span class="tag">Linux</span><span class="tag">Windows</span>
+        <span class="tag">PowerShell</span><span class="tag">Python</span>
+        <span class="tag">SQL</span><span class="tag">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="contacto">
+    <h2 data-i18n="contact_title"></h2>
+    <p class="contacto-footer">
+      <a href="mailto:joacosangui@gmail.com">joacosangui@gmail.com</a> ·
+      <a href="https://github.com/Jms2162" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/joaquin-sanguinetti" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> <span class="span-creditos">$Joaquin Sanguinetti</span>  · <span data-i18n="footer"></span></footer>
+
+<dialog id="modal">
+  <article>
+    <button class="close" id="close" data-i18n="close"></button>
+    <div id="detail"></div>
+  </article>
+</dialog>
+
+<script src="labs.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
