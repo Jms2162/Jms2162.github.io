@@ -12,6 +12,7 @@ const I18N = {
     about_p2: "En PwC trabajé como Especialista en Ciberseguridad (IAM): di soporte técnico de Nivel 2 a clientes corporativos de EE. UU., gestioné accesos con Active Directory y Oracle Identity Manager, trabajé con Splunk y ServiceNow, y participé en auditorías de cumplimiento alineadas con ISO 27001.",
     about_p3: "Complemento mi formación con Ethical Hacking Fundamentals y CCNA Fundamentals. Hablo inglés avanzado, español nativo y portugués básico. Este sitio reúne los laboratorios que resuelvo, con el paso a paso de cada uno.",
     cv_btn: "Descargar CV",
+    theme_btn: "Cambiar tema",
     tl_loc: "ubicación", tl_focus: "foco", tl_stack: "stack", tv_focus: "Blue Team · Operaciones SOC",
     sk_blue: "Defensa (Blue Team)", sk_off: "Ofensiva", sk_net: "Redes", sk_dev: "Sistemas y desarrollo",
     nav_certs: "Certificaciones", stat_certs: "Certificaciones", certs_title: "Certificaciones y cursos",
@@ -39,6 +40,7 @@ const I18N = {
     about_p2: "At PwC I worked as a Cybersecurity Specialist (IAM): I provided Level 2 technical support to U.S. corporate clients, managed access with Active Directory and Oracle Identity Manager, worked with Splunk and ServiceNow, and took part in compliance audits aligned with ISO 27001.",
     about_p3: "I complement my training with Ethical Hacking Fundamentals and CCNA Fundamentals. I speak advanced English, native Spanish and basic Portuguese. This site collects the labs I solve, with a step-by-step writeup for each.",
     cv_btn: "Download CV",
+    theme_btn: "Toggle theme",
     tl_loc: "location", tl_focus: "focus", tl_stack: "stack", tv_focus: "Blue Team · SOC operations",
     sk_blue: "Defense (Blue Team)", sk_off: "Offensive", sk_net: "Networking", sk_dev: "Systems and development",
     nav_certs: "Certifications", stat_certs: "Certifications", certs_title: "Certifications and courses",
@@ -70,6 +72,7 @@ const I18N = {
     about_p2: "Na PwC atuei como Especialista em Cibersegurança (IAM): prestei suporte técnico de Nível 2 a clientes corporativos dos EUA, gerenciei acessos com Active Directory e Oracle Identity Manager, trabalhei com Splunk e ServiceNow e participei de auditorias de conformidade alinhadas à ISO 27001.",
     about_p3: "Complemento minha formação com Ethical Hacking Fundamentals e CCNA Fundamentals. Falo inglês avançado, espanhol nativo e português básico. Este site reúne os laboratórios que resolvo, com o passo a passo de cada um.",
     cv_btn: "Baixar CV",
+    theme_btn: "Alternar tema",
     tl_loc: "local", tl_focus: "foco", tl_stack: "stack", tv_focus: "Blue Team · Operações de SOC",
     sk_blue: "Defesa (Blue Team)", sk_off: "Ofensiva", sk_net: "Redes", sk_dev: "Sistemas e desenvolvimento",
     contact_title: "Contato",
@@ -291,5 +294,37 @@ intro();
     }
     btn.textContent = t("ct_copied");
     setTimeout(() => (btn.textContent = t("ct_copy")), 1800);
+  });
+})();
+
+
+// Menú: resalta la sección que se está viendo
+(function () {
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const links = [...document.querySelectorAll("nav a[href^='#']")];
+  function spy() {
+    let cur = "";
+    sections.forEach((s) => { if (s.getBoundingClientRect().top <= innerHeight * 0.35) cur = s.id; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = sections[sections.length - 1].id;
+    links.forEach((a) => {
+      const on = a.getAttribute("href") === "#" + cur;
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+  }
+  addEventListener("scroll", spy, { passive: true });
+  addEventListener("resize", spy);
+  spy();
+})();
+
+// Botón de tema claro / oscuro (recuerda la elección)
+(function () {
+  const root = document.documentElement;
+  const systemDark = matchMedia("(prefers-color-scheme: dark)");
+  $("#theme-btn").addEventListener("click", () => {
+    const now = root.dataset.theme || (systemDark.matches ? "dark" : "light");
+    const next = now === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
   });
 })();

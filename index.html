@@ -10,13 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{var s=localStorage.getItem("theme");if(s==="dark"||s==="light")document.documentElement.dataset.theme=s}catch(e){}</script>
 </head>
 
 <body>
 <header class="top">
   <a class="logo" href="#inicio">#jms2162<span>@labs</span></a>
   <nav>
-    <br>
     <a href="#laboratorios" data-i18n="nav_labs"></a>
     <a href="#certificaciones" data-i18n="nav_certs"></a>
     <a href="#sobre-mi" data-i18n="nav_about"></a>
@@ -25,6 +25,7 @@
       <button type="button" data-lang="es" aria-label="Español">ES</button>
       <button type="button" data-lang="en" aria-label="English">EN</button>
       <button type="button" data-lang="pt" aria-label="Português">POR</button>
+      <button type="button" class="theme" id="theme-btn" data-i18n-aria="theme_btn">◐</button>
     </span>
   </nav>
 </header>
