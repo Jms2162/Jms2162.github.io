@@ -44,7 +44,34 @@ const I18N = {
     page_title: "Joaquin Sanguinetti · Labs",
     meta_desc: "Solved virtual machine labs: writeups, tools and lessons learned.",
     locale: "en-US"
+  },
+  pt: {
+    nav_labs: "Laboratórios", nav_certs: "Certificações", nav_about: "Sobre mim", nav_contact: "Contato",
+    hero_lead: "SOC Analyst e estudante de cibersegurança. Aqui documento cada máquina que resolvo: como a enumerei, como entrei e o que aprendi.",
+    stat_total: "Máquinas resolvidas", stat_plat: "Plataformas", stat_certs: "Certificações", stat_last: "Último writeup",
+    labs_title: "Laboratórios resolvidos",
+    search_ph: "Buscar por nome, ferramenta ou técnica", search_aria: "Buscar",
+    all_plat: "Todas as plataformas", all_dif: "Qualquer dificuldade",
+    empty: "Nenhum laboratório corresponde. Tente outra busca ou limpe os filtros.",
+    labs_soon: "Os primeiros laboratórios serão publicados em breve.",
+    certs_title: "Certificações e cursos",
+    certs_soon: "Em breve.",
+    cert_done: "Concluído", cert_progress: "Em andamento", cert_view: "Ver credencial",
+    about_title: "Sobre mim",
+    about_p1: "Sou estudante de Gestão de Tecnologia da Informação na UADE e trabalho com cibersegurança desde 2022. Hoje foco em defesa e operações de SOC, e pratico técnicas ofensivas em laboratórios para entender como um atacante pensa.",
+    about_p2: "Na PwC atuei como Especialista em Cibersegurança (IAM): prestei suporte técnico de Nível 2 a clientes corporativos dos EUA, gerenciei acessos com Active Directory e Oracle Identity Manager, trabalhei com Splunk e ServiceNow e participei de auditorias de conformidade alinhadas à ISO 27001.",
+    about_p3: "Complemento minha formação com Ethical Hacking Fundamentals e CCNA Fundamentals. Falo inglês avançado, espanhol nativo e português básico. Este site reúne os laboratórios que resolvo, com o passo a passo de cada um.",
+    cv_btn: "Baixar CV",
+    sk_blue: "Defesa (Blue Team)", sk_off: "Ofensiva", sk_net: "Redes", sk_dev: "Sistemas e desenvolvimento",
+    contact_title: "Contato",
+    footer: "Writeups para fins educacionais, realizados em ambientes autorizados.",
+    close: "Fechar", tools: "Ferramentas", steps: "Passo a passo", lessons: "Aprendizados",
+    easy: "Fácil", medium: "Média", hard: "Difícil", insane: "Insana",
+    page_title: "Joaquin Sanguinetti · Laboratórios",
+    meta_desc: "Laboratórios de máquinas virtuais resolvidos: writeups, ferramentas e aprendizados.",
+    locale: "pt-BR"
   }
+
 };
 
 const $ = (s) => document.querySelector(s);
@@ -55,9 +82,9 @@ const el = (tag, cls, text) => {
   return n;
 };
 
-let lang = "es";
-try { lang = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es" : "en"); }
-catch (e) { lang = navigator.language.startsWith("es") ? "es" : "en"; }
+const SUPPORTED = ["es", "en", "pt"];
+let lang = SUPPORTED.includes(navigator.language.slice(0, 2)) ? navigator.language.slice(0, 2) : "en";
+try { const saved = localStorage.getItem("lang"); if (SUPPORTED.includes(saved)) lang = saved; } catch (e) {}
 
 const t = (k) => I18N[lang][k];
 // Textos de los labs: string único u objeto {es, en}
