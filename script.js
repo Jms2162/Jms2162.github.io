@@ -13,7 +13,9 @@ const I18N = {
     about_p3: "Complemento mi formación con Ethical Hacking Fundamentals y CCNA Fundamentals. Hablo inglés avanzado, español nativo y portugués básico. Este sitio reúne los laboratorios que resuelvo, con el paso a paso de cada uno.",
     cv_btn: "Descargar CV",
     sk_blue: "Defensa (Blue Team)", sk_off: "Ofensiva", sk_net: "Redes", sk_dev: "Sistemas y desarrollo",
-    certs_soon: "Proximamente...",
+    nav_certs: "Certificaciones", stat_certs: "Certificaciones", certs_title: "Certificaciones y cursos",
+    certs_soon: "Próximamente.",
+    cert_done: "Completado", cert_progress: "En curso", cert_view: "Ver credencial",
     contact_title: "Contacto",
     footer: "Writeups con fines educativos, realizados en entornos autorizados.",
     close: "Cerrar", tools: "Herramientas", steps: "Paso a paso", lessons: "Aprendizajes",
@@ -36,7 +38,9 @@ const I18N = {
     about_p3: "I complement my training with Ethical Hacking Fundamentals and CCNA Fundamentals. I speak advanced English, native Spanish and basic Portuguese. This site collects the labs I solve, with a step-by-step writeup for each.",
     cv_btn: "Download CV",
     sk_blue: "Defense (Blue Team)", sk_off: "Offensive", sk_net: "Networking", sk_dev: "Systems and development",
-    certs_soon: "Coming soon...",
+    nav_certs: "Certifications", stat_certs: "Certifications", certs_title: "Certifications and courses",
+    certs_soon: "Coming soon.",
+    cert_done: "Completed", cert_progress: "In progress", cert_view: "View credential",
     contact_title: "Contact",
     footer: "Writeups for educational purposes, done in authorized environments.",
     close: "Close", tools: "Tools", steps: "Step by step", lessons: "Lessons learned",
@@ -146,6 +150,29 @@ function renderDetail(l) {
 
 function openLab(l) { current = l; renderDetail(l); $("#modal").showModal(); }
 
+
+function renderCerts() {
+  const box = $("#certs");
+  box.replaceChildren();
+  CERTS.forEach((c) => {
+    const inProgress = c.status === "progress";
+    const card = el("div", "card cert");
+    const meta = el("div", "meta");
+    meta.append(el("span", "badge " + (inProgress ? "dif-medium" : "dif-easy"), t(inProgress ? "cert_progress" : "cert_done")));
+    if (c.year) meta.append(el("span", "", String(c.year)));
+    card.append(meta, el("h3", "", L(c.name)));
+    if (c.issuer) card.append(el("p", "", c.issuer));
+    if (c.url) {
+      const a = el("a", "", t("cert_view"));
+      a.href = c.url; a.target = "_blank"; a.rel = "noopener";
+      card.append(a);
+    }
+    box.append(card);
+  });
+  $("#certs-empty").hidden = CERTS.length > 0;
+}
+
+
 function applyLang() {
   document.documentElement.lang = lang;
   document.title = t("page_title");
@@ -158,12 +185,14 @@ function applyLang() {
   fillSelect($("#f-dif"), t("all_dif"), unique("difficulty"), t);
   $("#stat-total").textContent = labs.length;
   $("#stat-plat").textContent = unique("platform").length;
+  $("#stat-certs").textContent = CERTS.filter((c) => c.status !== "progress").length;
   $("#stat-last").textContent = labs.length ? fmt(labs[0].date) : "—";
   $("#year").textContent = new Date().getFullYear();
   const cv = $("#cv-btn");
   cv.href = lang === "es" ? "cv-es.pdf" : "cv-en.pdf";
   cv.download = lang === "es" ? "Joaquin_Sanguinetti_CV_ES.pdf" : "Joaquin_Sanguinetti_CV_EN.pdf";
   render();
+  renderCerts();
   if (current && $("#modal").open) renderDetail(current);
 }
 

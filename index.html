@@ -27,6 +27,7 @@
   <a class="logo" href="#inicio">#jms2162<span>@labs</span></a>
   <nav>
     <a href="#laboratorios" data-i18n="nav_labs"></a>
+    <a href="#certificaciones" data-i18n="nav_certs"></a>
     <a href="#sobre-mi" data-i18n="nav_about"></a>
     <a href="#contacto" data-i18n="nav_contact"></a>
     <span class="lang" role="group" aria-label="Idioma / Language">
@@ -45,6 +46,7 @@
     <dl class="stats">
       <div><dt data-i18n="stat_total"></dt><dd id="stat-total">0</dd></div>
       <div><dt data-i18n="stat_plat"></dt><dd id="stat-plat">0</dd></div>
+      <div><dt data-i18n="stat_certs"></dt><dd id="stat-certs">0</dd></div>
       <div><dt data-i18n="stat_last"></dt><dd id="stat-last">—</dd></div>
     </dl>
   </section>
@@ -58,6 +60,13 @@
     </div>
     <div id="grid" class="grid"></div>
     <p id="empty" class="empty" data-i18n="empty" hidden></p>
+  </section>
+
+
+  <section id="certificaciones">
+    <h2 data-i18n="certs_title"></h2>
+    <div id="certs" class="grid"></div>
+    <p id="certs-empty" class="empty" data-i18n="certs_soon" hidden></p>
   </section>
 
   <section id="sobre-mi" class="about">
@@ -131,6 +140,7 @@
 </dialog>
 
 <script src="labs.js"></script>
+<script src="certs.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
