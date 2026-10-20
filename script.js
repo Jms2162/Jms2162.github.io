@@ -17,6 +17,7 @@ const I18N = {
     certs_soon: "Próximamente.",
     cert_done: "Completado", cert_progress: "En curso", cert_view: "Ver credencial",
     contact_title: "Contacto",
+    ct_mail: "Correo", ct_copy: "Copiar", ct_copied: "¡Copiado!",
     footer: "Writeups con fines educativos, realizados en entornos autorizados.",
     close: "Cerrar", tools: "Herramientas", steps: "Paso a paso", lessons: "Aprendizajes",
     easy: "Fácil", medium: "Media", hard: "Difícil", insane: "Insana",
@@ -42,6 +43,7 @@ const I18N = {
     certs_soon: "Coming soon.",
     cert_done: "Completed", cert_progress: "In progress", cert_view: "View credential",
     contact_title: "Contact",
+    ct_mail: "Email", ct_copy: "Copy", ct_copied: "Copied!",
     footer: "Writeups for educational purposes, done in authorized environments.",
     close: "Close", tools: "Tools", steps: "Step by step", lessons: "Lessons learned",
     easy: "Easy", medium: "Medium", hard: "Hard", insane: "Insane",
@@ -68,6 +70,7 @@ const I18N = {
     cv_btn: "Baixar CV",
     sk_blue: "Defesa (Blue Team)", sk_off: "Ofensiva", sk_net: "Redes", sk_dev: "Sistemas e desenvolvimento",
     contact_title: "Contato",
+    ct_mail: "E-mail", ct_copy: "Copiar", ct_copied: "Copiado!",
     footer: "Writeups para fins educacionais, realizados em ambientes autorizados.",
     close: "Fechar", tools: "Ferramentas", steps: "Passo a passo", lessons: "Aprendizados",
     easy: "Fácil", medium: "Média", hard: "Difícil", insane: "Insana",
@@ -265,4 +268,25 @@ intro();
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+
+
+// Correo armado por JS (no aparece escrito en el HTML) + botón de copiar
+(function () {
+  const MAIL = ["joacosangui", "gmail.com"].join("@");
+  const link = $("#mail-link");
+  link.href = "mailto:" + MAIL;
+  $("#mail-text").textContent = MAIL;
+
+  const btn = $("#copy-mail");
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(MAIL);
+    } catch (e) {
+      window.prompt("Copy:", MAIL);
+      return;
+    }
+    btn.textContent = t("ct_copied");
+    setTimeout(() => (btn.textContent = t("ct_copy")), 1800);
+  });
 })();

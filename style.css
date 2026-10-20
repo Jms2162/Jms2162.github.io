@@ -210,3 +210,40 @@ body{position:relative;min-height:100vh}
   -webkit-mask-image:radial-gradient(circle 240px at var(--mx,60%) var(--my,30%),#000,transparent);
   mask-image:radial-gradient(circle 200px at var(--mx,60%) var(--my,30%),#000,transparent);
 }
+
+
+
+/* Espaciado del logo en celular */
+@media (max-width:640px){
+  .top{padding-top:28px;gap:18px}
+  .logo{display:block;min-height:32px;line-height:32px}
+  nav{margin-top:2px}
+}
+
+
+
+/* Foto redonda y centrada en celular */
+@media (max-width:760px){
+  .about-top{align-items:center}
+  .avatar{
+    align-self:center;
+    width:180px;height:180px;
+    border-radius:50%;
+    object-position:center 20%;
+  }
+  .about-text{align-self:stretch}
+}
+
+/* Contacto */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px}
+.contact-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;min-width:0}
+.contact-card:hover{border-color:var(--accent)}
+.ct-link{display:flex;align-items:center;gap:14px;flex:1;min-width:0;color:var(--ink);text-decoration:none}
+.ct-icon{width:26px;height:26px;flex:none;color:var(--accent)}
+.ct-text{display:flex;flex-direction:column;min-width:0}
+.ct-label{font-size:.8rem;color:var(--muted)}
+.ct-value{font:500 .92rem "IBM Plex Mono",monospace;overflow-wrap:anywhere}
+.ct-copy{flex:none;font:500 .8rem "IBM Plex Mono",monospace;background:none;color:var(--ink);
+  border:1px solid var(--line);border-radius:4px;padding:6px 10px;cursor:pointer}
+.ct-copy:hover{border-color:var(--accent)}

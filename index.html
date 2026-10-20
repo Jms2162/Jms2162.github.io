@@ -26,6 +26,7 @@
 <header class="top">
   <a class="logo" href="#inicio">#jms2162<span>@labs</span></a>
   <nav>
+    <br>
     <a href="#laboratorios" data-i18n="nav_labs"></a>
     <a href="#certificaciones" data-i18n="nav_certs"></a>
     <a href="#sobre-mi" data-i18n="nav_about"></a>
@@ -121,13 +122,42 @@
 </section>
 
   <section id="contacto">
-    <h2 data-i18n="contact_title"></h2>
-    <p class="contacto-footer">
-      <a href="mailto:joacosangui@gmail.com">joacosangui@gmail.com</a> ·
-      <a href="https://github.com/Jms2162" target="_blank" rel="noopener">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/joaquin-sanguinetti" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
-  </section>
+  <h2 data-i18n="contact_title"></h2>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <a class="ct-link" id="mail-link" href="#">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span class="ct-text">
+          <span class="ct-label" data-i18n="ct_mail"></span>
+          <span class="ct-value" id="mail-text">…</span>
+        </span>
+      </a>
+      <button type="button" class="ct-copy" id="copy-mail" data-i18n="ct_copy"></button>
+    </div>
+
+    <div class="contact-card">
+      <a class="ct-link" href="https://github.com/Jms2162" target="_blank" rel="noopener">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        <span class="ct-text">
+          <span class="ct-label">GitHub</span>
+          <span class="ct-value">Jms2162</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <a class="ct-link" href="https://www.linkedin.com/in/joaquin-sanguinetti" target="_blank" rel="noopener">
+        <svg class="ct-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.83v1.57h.06c.53-1.01 1.84-2.07 3.78-2.07 4.04 0 4.78 2.66 4.78 6.12v5.88h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.29h-4V9.75Z"/></svg>
+        <span class="ct-text">
+          <span class="ct-label">LinkedIn</span>
+          <span class="ct-value">joaquin-sanguinetti</span>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
 </main>
 
 <footer>© <span id="year"></span> <span class="span-creditos">$Joaquin Sanguinetti</span>  · <span data-i18n="footer"></span></footer>
