@@ -314,3 +314,12 @@ main section>h2::before{content:"~/";color:var(--accent)}
   --bg:#0e1424;--grid:#18213a;--panel:#141c32;--ink:#e6ebf7;--muted:#97a3bf;--line:#2a3555;
   --accent:#7f93ff;--code:#0a0f1d;--facil:#4cc38a;--media:#e3a23b;--dificil:#ff7b63;--insana:#b88cff;
   --c-blue:#6aa0ff;--c-off:#ff6b7a;--c-net:#3fd1c0;--c-dev:#b794ff}
+
+
+
+  /* Cierre de contacto */
+.contact-end{margin:28px 0 0;font:500 .95rem/1.6 "IBM Plex Mono",monospace;color:var(--muted)}
+.contact-end::before{content:"$ ";color:var(--accent)}
+.contact-end::after{content:"";display:inline-block;width:.55em;height:1em;margin-left:6px;
+  vertical-align:-.15em;background:var(--accent);animation:blink 1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){.contact-end::after{animation:none}}
