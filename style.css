@@ -247,3 +247,32 @@ body{position:relative;min-height:100vh}
 .ct-copy{flex:none;font:500 .8rem "IBM Plex Mono",monospace;background:none;color:var(--ink);
   border:1px solid var(--line);border-radius:4px;padding:6px 10px;cursor:pointer}
 .ct-copy:hover{border-color:var(--accent)}
+
+
+/* Colores del logo y del footer: se adaptan a modo claro y oscuro */
+.logo{color:var(--dificil)}
+.logo span{color:var(--accent)}
+.span-creditos{color:var(--facil)}
+
+/* Inicio como ventana de terminal */
+.term{max-width:820px;background:var(--panel);border:1px solid var(--line);border-radius:6px;
+  overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--bg) 55%,var(--panel))}
+.term-bar i{display:block;width:11px;height:11px;border-radius:50%}
+.term-bar i:nth-child(1){background:var(--dificil)}
+.term-bar i:nth-child(2){background:var(--media)}
+.term-bar i:nth-child(3){background:var(--facil)}
+.term-title{margin-left:8px;font:.8rem "IBM Plex Mono",monospace;color:var(--muted)}
+.term-body{padding:22px 24px 26px}
+.term-body h1{font-size:clamp(2rem,5vw,3.2rem);margin:.3em 0 .2em}
+.term-body .lead{margin:0 0 20px}
+.term-lines{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font:.9rem/1.5 "IBM Plex Mono",monospace}
+.term-lines .k{color:var(--accent)}
+.term-lines .v{overflow-wrap:anywhere}
+.hero .term-out{transition:opacity .6s ease,transform .6s ease}
+.hero.pending .term-out{opacity:0;transform:translateY(8px)}
+@media (max-width:640px){
+  .term-body{padding:18px 16px 20px}
+  .term-lines{gap:4px 12px;font-size:.85rem}
+}
