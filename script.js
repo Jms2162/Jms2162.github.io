@@ -203,3 +203,37 @@ function intro() {
   setTimeout(tick, 300);
 }
 intro();
+
+
+// Fondo interactivo: una luz sigue al mouse; sin mouse, deambula sola
+(function () {
+  const glow = el("div", "bg-glow");
+  glow.setAttribute("aria-hidden", "true");
+  document.body.prepend(glow);
+
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let px = null, py = null, last = 0;
+  let x = innerWidth * 0.6, y = innerHeight * 0.3;
+
+  addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") return;
+    px = e.clientX; py = e.clientY; last = performance.now();
+  }, { passive: true });
+
+  function frame(now) {
+    let tx, ty;
+    if (px !== null && now - last < 4000) { tx = px; ty = py; }
+    else if (calm) { tx = x; ty = y; }
+    else {
+      const s = now / 1000;
+      tx = innerWidth * (0.5 + 0.35 * Math.sin(s * 0.90));
+      ty = innerHeight * (0.45 + 0.3 * Math.sin(s * 0.3 + 1));
+    }
+    x += (tx - x) * 1;
+    y += (ty - y) * 1;
+    glow.style.setProperty("--mx", x + "px");
+    glow.style.setProperty("--my", (y + scrollY) + "px");
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();

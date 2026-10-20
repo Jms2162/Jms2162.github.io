@@ -198,3 +198,15 @@ nav a{white-space:nowrap}
 /* Brasil */
 .lang button[data-lang="pt"]{--flag:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23009b3a'/><polygon points='15,2 27,10 15,18 3,10' fill='%23fedf00'/><circle cx='15' cy='10' r='4' fill='%23002776'/></svg>")}
 
+/* Fondo interactivo: la cuadrícula se enciende cerca del cursor */
+body{position:relative;min-height:100vh}
+.bg-glow{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle 110px at var(--mx,60%) var(--my,30%),color-mix(in srgb,var(--accent) 16%,transparent),transparent),
+    linear-gradient(var(--accent) 1px,transparent 1px) 0 0/32px 32px,
+    linear-gradient(90deg,var(--accent) 1px,transparent 1px) 0 0/32px 32px;
+  -webkit-mask-image:radial-gradient(circle 240px at var(--mx,60%) var(--my,30%),#000,transparent);
+  mask-image:radial-gradient(circle 200px at var(--mx,60%) var(--my,30%),#000,transparent);
+}
